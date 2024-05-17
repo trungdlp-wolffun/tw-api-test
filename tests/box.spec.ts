@@ -46,3 +46,17 @@ test("validate boxes config", async ({ request }) => {
     expect(sumRatio).toBe(1.0);
   }
 });
+
+test("login by email", async ({ request }) => {
+  const response = await request.post(
+    "https://auth.staging.thetanarena.com/auth/v1/loginByEmail",
+    {
+      data: {
+        email: "khangtdd+11@wolffungame.com",
+      },
+    }
+  );
+  console.log(await response.json());
+  expect(response.ok()).toBeTruthy();
+  expect(response.status()).toBe(200);
+});
